@@ -210,9 +210,9 @@ class Request:
 
     @classmethod
     def xyz_response(cls, device, sensor, type_method='int'):
-        x = round(float(Request.response('hummingbird', 'in', sensor, 'X', device)), 3)
-        y = round(float(Request.response('hummingbird', 'in', sensor, 'Y', device)), 3)
-        z = round(float(Request.response('hummingbird', 'in', sensor, 'Z', device)), 3)
+        x = Utility.decimal_bounds(round(float(Request.response('hummingbird', 'in', sensor, 'X', device)), 3), -100.0, 100.0)
+        y = Utility.decimal_bounds(round(float(Request.response('hummingbird', 'in', sensor, 'Y', device)), 3), -100.0, 100.0)
+        z = Utility.decimal_bounds(round(float(Request.response('hummingbird', 'in', sensor, 'Z', device)), 3), -100.0, 100.0)
 
         if type_method == 'int':
             return [int(x), int(y), int(z)]
